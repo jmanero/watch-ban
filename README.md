@@ -11,7 +11,7 @@ Watch Ban is intended to provide advertisement and domain blocking for well-beha
 
 ## Configuration
 
-Take a look at the [example] directory. It contains an example [configuration](example/config.json) file, and NGiNX and BIND9 configurations. The included [configuration](example/config.json) example should be sufficient to block many advertising, tracking, and compromised e-commerce sites.
+Take a look at the [example]() directory. It contains an example [configuration](example/config.json) file, and NGiNX and BIND9 configurations. The included [configuration](example/config.json) example should be sufficient to block many advertising, tracking, and compromised e-commerce sites.
 
 _The details of securing and managing NGoNX and BIND9 are out of the scope of this README. Check out the (NGiNX Beginners Guide)[http://nginx.org/en/docs/beginners_guide.html] and the (DigitalOcean BIND9 Tutorial) [https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04] for the basics_
 

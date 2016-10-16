@@ -4,5 +4,8 @@ author  "John Manero <john.manero@gmail.com>"
 start on startup
 stop on shutdown
 
+respawn
+respawn limit 5 10
+
 console log
 exec /opt/watch-ban/bin/server -c /opt/watch-ban/example/config.json
