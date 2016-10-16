@@ -40,10 +40,9 @@ const server = HTTP.createServer(app);
 app.engine('ejs', require('ejs').renderFile);
 app.set('views', Path.resolve(__dirname, '../view'));
 
-app.use('/_dist', require('serve-static')(Path.resolve(__dirname, '../dist')));
+require('../lib/control/dist').attach(app);
 app.get('/_api/v1/services', (req, res) => res.json(services));
 app.get('/_api/v1/renderers', (req, res) => res.json(renderers));
-
 require('../lib/control/sources').attach(app, sources);
 
 // Blackhole Controller
