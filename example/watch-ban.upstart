@@ -1,0 +1,8 @@
+description "Watch domain lists to generate DNS black-hole configurations"
+author  "John Manero <john.manero@gmail.com>"
+
+start on startup
+stop on shutdown
+
+console log
+exec /opt/watch-ban/bin/server -c /opt/watch-ban/example/config.json
