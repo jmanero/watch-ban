@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+'use strict';
+const Express = require('express');
+const HTTP = require('http');
+const Path = require('path');
+
+require('../lib/config');
+require('../lib/log');
+
+const Source = require('../lib/source');
+const Service = require('../lib/service');
+const Renderer = require('../lib/renderer');
+
+const sources = {};
+Object.keys(Config.get('sources')).forEach((name) => {
+  sources[name] = new Source(name, Config.get(`sources:${name}`)).start();
+});
+
+const services = {};
+Object.keys(Config.get('services')).forEach((name) => {
+  services[name] = new Service(name, Config.get(`services:${name}`));
+});
+
+const renderers = {};
+Object.keys(Config.get('renderers')).forEach((name) => {
+  renderers[name] = new Renderer(name, Config.get(`renderers:${name}`));
+
+  Config.get(`renderers:${name}:sources`).forEach((source) => {
+    renderers[name].subscribe(sources[source]);
+  });
+
+  Config.get(`renderers:${name}:notifies`).forEach((service) => {
+    renderers[name].notify(services[service]);
+  });
+});
+
+const app = Express();
+const server = HTTP.createServer(app);
+
+app.engine('ejs', require('ejs').renderFile);
+app.set('views', Path.resolve(__dirname, '../view'));
+
+app.use('/_dist', require('serve-static')(Path.resolve(__dirname, '../dist')));
+app.get('/_api/v1/services', (req, res) => res.json(services));
+app.get('/_api/v1/renderers', (req, res) => res.json(renderers));
+
+require('../lib/control/sources').attach(app, sources);
+
+// Blackhole Controller
+require('../lib/control/block').attach(app, sources);
+
+server.listen(Config.get('listen:port'), Config.get('listen:bind'), () =>
+  Log.info(`Service: HTTP/${Config.get('listen:bind')}:${Config.get('listen:port')} is listening for connections`));

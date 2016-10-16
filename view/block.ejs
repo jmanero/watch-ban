@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/_dist/bootstrap.min.css" rel="stylesheet">
+
+    <style media="screen">
+      body {
+        padding-top: 5rem;
+      }
+    </style>
+
+    <title>Blocked Content</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">This content has been blocked</h1>
+        <p class="lead"><%= domain %></p>
+      </div>
+
+      <% sources.forEach((source) => { -%>
+        <div class="card">
+          <div class="card-header"><%= source.name %></div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Updated</th>
+                <td><%= source.updated %></td>
+              </tr>
+              <tr>
+                <th>Signature</th>
+                <td><%= source.signature %></td>
+              </tr>
+              <tr>
+                <th>Entries</th>
+                <td><%= source.entries.length %></td>
+              </tr>
+            </tbody>
+          </table>
+          <form class="form-inline" action="/_api/v1/sources/<%= source.name %>/update" method="post">
+            <input type="submit" class="btn btn-link card-link" value="Check for Updates">
+          </form>
+        </div>
+      <% }) -%>
+    </div>
+  </body>
+</html>
