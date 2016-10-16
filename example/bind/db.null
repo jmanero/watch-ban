@@ -1,0 +1,17 @@
+;
+; Blackhole zones to a private web server
+;
+$TTL  60 ; 1 Minute
+
+@       IN      SOA     ns-0.tauphi.net. hostmaster.tauphi.net. (
+                          1         ; serial
+                          10800     ; refresh (3 hours)
+                          3600      ; retry (1 hour)
+                          43200     ; expire (12 hours)
+                          30        ; minimum (30 seconds)
+                        )
+        IN      NS      ns-0.tauphi.net.
+        IN      A       127.0.0.1 ; Replace with internal server address
+
+; Match queries for all subdomains
+*       IN      A       127.0.0.1 ; Replace with internal server address
