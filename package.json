@@ -1,0 +1,37 @@
+{
+  "name": "watch-ban",
+  "version": "0.0.1",
+  "description": "Watch domain lists to generate DNS black-hole configurations",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "cover": "rm -Rf docs/coverage && istanbul cover _mocha",
+    "doc": "rm -rf docs/jsdoc && jsdoc -c .jsdoc.json lib",
+    "lint": "eslint lib/*.js lib/**/*.js bin/* test/*.js",
+    "clean": "rm -rf docs/jsdoc docs/coverage docs/_site docs/.sass-cache node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmanero/watch-ban.git"
+  },
+  "author": "John Manero <john.manero@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmanero/watch-ban/issues"
+  },
+  "homepage": "https://github.com/jmanero/watch-ban#readme",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "nconf": "^0.8.4",
+    "serve-static": "^1.11.1",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.0",
+    "istanbul": "^0.4.5",
+    "jsdoc": "^3.4.2",
+    "mocha": "^3.1.2"
+  }
+}
