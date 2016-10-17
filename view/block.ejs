@@ -21,31 +21,30 @@
         <h1 class="display-3">This content has been blocked</h1>
         <p class="lead"><%= domain %></p>
       </div>
-
-      <% sources.forEach((source) => { -%>
-        <div class="card">
-          <div class="card-header"><%= source.name %></div>
-          <table class="table">
-            <tbody>
-              <tr>
-                <th>Updated</th>
-                <td><%= source.updated %></td>
-              </tr>
-              <tr>
-                <th>Signature</th>
-                <td><%= source.signature %></td>
-              </tr>
-              <tr>
-                <th>Entries</th>
-                <td><%= source.entries.length %></td>
-              </tr>
-            </tbody>
-          </table>
-          <form class="form-inline" action="/_api/v1/sources/<%= source.name %>/update" method="post">
-            <input type="submit" class="btn btn-link card-link" value="Check for Updates">
-          </form>
-        </div>
-      <% }) -%>
+<% sources.forEach((source) => { -%>
+      <div class="card">
+        <div class="card-header"><%= source.name %></div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Updated</th>
+              <td><%= source.updated %></td>
+            </tr>
+            <tr>
+              <th>Signature</th>
+              <td><%= source.signature %></td>
+            </tr>
+            <tr>
+              <th>Entries</th>
+              <td><%= source.entries.length %></td>
+            </tr>
+          </tbody>
+        </table>
+        <form class="form-inline" action="/_api/v1/sources/<%= source.name %>/update" method="post">
+          <input type="submit" class="btn btn-link card-link" value="Check for Updates">
+        </form>
+      </div>
+<% }) -%>
     </div>
   </body>
 </html>
