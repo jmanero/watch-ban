@@ -16,7 +16,8 @@ Watch Ban manages DNS policy-zone configurations. It is only effective _if clien
 ## Getting Started
 
 * Ensure that the latest version of [NodeJS 4.x](https://nodejs.org/en/download/) is installed.
-* Check out or unpack watch-ban into `/opt/watch-ban`.
+* Check out or unpack the source into watch-ban into `/opt/watch-ban`: `git clone git@github.com:jmanero/watch-ban.git /opt/watch-ban`
+* Install dependencies: `cd /opt/watch-ban && npm install`
 * Copy the included [Upstart configuration](example/watch-ban.upstart) to `/etc/init/watch-ban.conf`.
 * Fire it up `sudo start watch-ban`
 
@@ -67,5 +68,5 @@ A service that needs to have reloads triggered when configuration files are upda
 The [example](example) directory contains a sample [configuration](example/config.json) file, and NGiNX and BIND9 configurations. The included [configuration](example/config.json) example should be sufficient to block many advertising, tracking, and compromised e-commerce sites.
 
 For basic NGiNX and BIND9 configurations see
-* The (NGiNX Beginners Guide)[http://nginx.org/en/docs/beginners_guide.html]
-* The (DigitalOcean BIND9 Tutorial)[https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04]
+* The [NGiNX Beginners Guide](http://nginx.org/en/docs/beginners_guide.html)
+* The [DigitalOcean BIND9 Tutorial](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04)
