@@ -1,13 +1,17 @@
 Watch Ban
 =========
 
-Build and update DNS black lists from published domain lists.
+Build and update DNS black lists from published domain lists for advertisement blocking and fat-finger protection.
 
 ## Warning
 
-*This is not a firewall. It is not a network security appliance. It does not provide any functionality to block traffic.* Watch Ban manages DNS policy-zone configurations. It is only effective _if clients use the DNS server_. Users and malicious actors can easily circumvent blocking policies by using another DNS server.
+Watch Ban is intended to provide advertisement and domain blocking for well-behaved clients who opt-into the service.
 
-Watch Ban is intended to provide advertisement and domain blocking for well-behaved clients who, essentially, opt into the service.
+* **Watch Ban is not a firewall**
+* **Watch Ban is not a network security appliance**
+* **Watch Ban does not provide any functionality to block traffic**
+
+Watch Ban manages DNS policy-zone configurations. It is only effective _if clients use the managed DNS server_. Users and malicious actors can easily circumvent blocking policies by using another DNS server.
 
 ## Getting Started
 
