@@ -41,9 +41,9 @@ app.engine('ejs', require('ejs').renderFile);
 app.set('views', Path.resolve(__dirname, '../view'));
 
 require('../lib/control/dist').attach(app);
+require('../lib/control/source').attach(app, sources);
 app.get('/_api/v1/services', (req, res) => res.json(services));
 app.get('/_api/v1/renderers', (req, res) => res.json(renderers));
-require('../lib/control/sources').attach(app, sources);
 
 // Blackhole Controller
 require('../lib/control/block').attach(app, sources);
